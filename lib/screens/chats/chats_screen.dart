@@ -44,7 +44,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
         BottomNavigationBarItem(
             icon: CircleAvatar(
               radius: 14,
-              backgroundImage: AssetImage('assets/images/user_2.png'),
+              backgroundImage: AssetImage('assets/images/user1.png'),
             ),
             label: 'Profil'),
       ],
@@ -54,7 +54,7 @@ class _ChatsScreenState extends State<ChatsScreen> {
   AppBar buildAppBar() {
     return AppBar(
       automaticallyImplyLeading: false,
-      title: Text('Chats'),
+      title: Text('Sohbetler'),
       actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
     );
   }

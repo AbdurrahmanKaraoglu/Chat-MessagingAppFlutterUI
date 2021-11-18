@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_messaging_app/constants.dart';
 import 'package:flutter_chat_messaging_app/models/Chat.dart';
 
-class ChatCard extends StatelessWidget {
+class ChatCard extends StatefulWidget {
   const ChatCard({
     Key? key,
     required this.chat,
@@ -13,9 +13,14 @@ class ChatCard extends StatelessWidget {
   final VoidCallback press;
 
   @override
+  State<ChatCard> createState() => _ChatCardState();
+}
+
+class _ChatCardState extends State<ChatCard> {
+  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: press,
+      onTap: widget.press,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding, vertical: kDefaultPadding * 0.75),
         child: Row(
@@ -24,9 +29,9 @@ class ChatCard extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 24,
-                  backgroundImage: AssetImage(chat.image),
+                  backgroundImage: AssetImage(widget.chat.image),
                 ),
-                if (chat.isActive)
+                if (widget.chat.isActive)
                   Positioned(
                     right: 0,
                     bottom: 0,
@@ -48,7 +53,7 @@ class ChatCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      chat.name,
+                      widget.chat.name,
                       style: TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
@@ -57,7 +62,7 @@ class ChatCard extends StatelessWidget {
                     Opacity(
                       opacity: 0.64,
                       child: Text(
-                        chat.lastMessage,
+                        widget.chat.lastMessage,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                       ),
@@ -68,7 +73,7 @@ class ChatCard extends StatelessWidget {
             ),
             Opacity(
               opacity: 0.64,
-              child: Text(chat.time),
+              child: Text(widget.chat.time),
             ),
           ],
         ),

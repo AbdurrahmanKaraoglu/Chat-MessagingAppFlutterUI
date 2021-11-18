@@ -19,15 +19,16 @@ class SigninOrSignupScreen extends StatelessWidget {
               ),
               Image.asset(
                 MediaQuery.of(context).platformBrightness == Brightness.light
-                    ? 'assets/images/Logo_light.png'
-                    : 'assets/images/Logo_dark.png',
+                    ? 'assets/images/Logo_light1.png'
+                    : 'assets/images/Logo_dark1.png',
                 height: 146,
+                fit: BoxFit.contain,
               ),
               Spacer(
                 flex: 1,
               ),
               PrimaryButton(
-                text: "Sign In",
+                text: "Giriş Yap",
                 press: () => Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -37,7 +38,7 @@ class SigninOrSignupScreen extends StatelessWidget {
               SizedBox(height: kDefaultPadding * 1.5),
               PrimaryButton(
                 color: Theme.of(context).colorScheme.secondary,
-                text: "Sign Up",
+                text: "Üye Ol",
                 press: () {},
               ),
               Spacer(

@@ -1,10 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_messaging_app/constants.dart';
 
-class ChatInputField extends StatelessWidget {
-  const ChatInputField({
-    Key? key,
-  }) : super(key: key);
+class ChatInputField extends StatefulWidget {
+  const ChatInputField({Key? key}) : super(key: key);
+
+  @override
+  State<ChatInputField> createState() => _ChatInputFieldState();
+}
+
+class _ChatInputFieldState extends State<ChatInputField> {
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    myController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,53 +33,54 @@ class ChatInputField extends StatelessWidget {
         ],
       ),
       child: SafeArea(
-          child: Row(
-        children: [
-          Icon(Icons.mic, color: kPrimaryColor),
-          SizedBox(width: kDefaultPadding),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 0.75),
-              height: 50,
-              decoration: BoxDecoration(
-                color: kPrimaryColor.withOpacity(0.05),
-                borderRadius: BorderRadius.circular(40),
-              ),
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.sentiment_satisfied_alt_outlined,
-                    color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
-                  ),
-                  SizedBox(width: kDefaultPadding / 4),
-                  Expanded(
-                    child: TextField(
-                      decoration: InputDecoration(hintText: 'Mesaj yazın', border: InputBorder.none),
+        child: Row(
+          children: [
+            Icon(Icons.mic, color: kPrimaryColor),
+            SizedBox(width: kDefaultPadding),
+            Expanded(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 0.75),
+                height: 50,
+                decoration: BoxDecoration(
+                  color: kPrimaryColor.withOpacity(0.05),
+                  borderRadius: BorderRadius.circular(40),
+                ),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.sentiment_satisfied_alt_outlined,
+                      color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
                     ),
-                  ),
+                    SizedBox(width: kDefaultPadding / 4),
+                    Expanded(
+                      child: TextField(
+                        controller: myController,
+                        decoration: InputDecoration(hintText: 'Mesaj yazın', border: InputBorder.none),
+                      ),
+                    ),
 
-                  // Icon(
-                  //   Icons.attach_file,
-                  //   color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
-                  // ),
-                  // SizedBox(width: kDefaultPadding / 4),
-                  // Icon(
-                  //   Icons.camera_alt_outlined,
-                  //   color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
-                  // ),
-                ],
+                    // Icon(
+                    //   Icons.attach_file,
+                    //   color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
+                    // ),
+                    // SizedBox(width: kDefaultPadding / 4),
+                    // Icon(
+                    //   Icons.camera_alt_outlined,
+                    //   color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
+                    // ),
+                  ],
+                ),
               ),
             ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.send,
-              color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
+            IconButton(
+              onPressed: () {
+                print(myController.text);
+              },
+              icon: Icon(Icons.send, color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64)),
             ),
-          ),
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
