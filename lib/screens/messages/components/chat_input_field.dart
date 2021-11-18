@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_messaging_app/constants.dart';
+import 'package:flutter_chat_messaging_app/models/Chat.dart';
+import 'package:flutter_chat_messaging_app/models/ChatMessage.dart';
 
 class ChatInputField extends StatefulWidget {
   const ChatInputField({Key? key}) : super(key: key);
@@ -75,6 +77,14 @@ class _ChatInputFieldState extends State<ChatInputField> {
             IconButton(
               onPressed: () {
                 print(myController.text);
+
+                demeChatMessages.add(
+                  ChatMessage(
+                      text: myController.text,
+                      messageType: ChatMessageType.text,
+                      messageStatus: MessageStatus.viewed,
+                      isSender: true),
+                );
               },
               icon: Icon(Icons.send, color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64)),
             ),
