@@ -9,28 +9,28 @@ class WelcomeScreen extends StatelessWidget {
       body: SafeArea(
           child: Column(
         children: [
-          Spacer(flex: 2),
+          const Spacer(flex: 2),
           Image.asset(
             MediaQuery.of(context).platformBrightness == Brightness.light
                 ? 'assets/images/welcome_image2.png'
                 : 'assets/images/welcome_image2.png',
           ),
-          Spacer(flex: 3),
+          const Spacer(flex: 3),
           Text(
             'Mesajlaşma Uygulamamıza \nHoş geldiniz',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.headline5!.copyWith(fontWeight: FontWeight.bold),
           ),
-          SizedBox(
+          const SizedBox(
             width: kDefaultPadding / 4,
           ),
-          Spacer(flex: 3),
+          const Spacer(flex: 3),
           FittedBox(
             child: TextButton(
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => SigninOrSignupScreen(),
+                      builder: (context) => const SigninOrSignupScreen(),
                     )),
                 child: Row(
                   children: [

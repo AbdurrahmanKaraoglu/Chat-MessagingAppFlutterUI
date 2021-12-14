@@ -5,6 +5,8 @@ import 'package:flutter_chat_messaging_app/screens/messages/components/chat_inpu
 import 'package:flutter_chat_messaging_app/screens/messages/components/message.dart';
 
 class Body extends StatefulWidget {
+  const Body({Key? key}) : super(key: key);
+
   @override
   State<Body> createState() => _BodyState();
 }
@@ -27,7 +29,7 @@ class _BodyState extends State<Body> {
             ),
           ),
         ),
-        ChatInputField(),
+        const ChatInputField(),
       ],
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_messaging_app/constants.dart';
 import 'package:flutter_chat_messaging_app/models/Chat.dart';
 import 'package:flutter_chat_messaging_app/models/ChatMessage.dart';
+import 'package:flutter_chat_messaging_app/screens/messages/components/EncryptData.dart';
 
 class ChatInputField extends StatefulWidget {
   const ChatInputField({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class ChatInputField extends StatefulWidget {
 
 class _ChatInputFieldState extends State<ChatInputField> {
   final myController = TextEditingController();
-
+  var encryptedText, plainText;
+  late final ChatMessage message;
   @override
   void dispose() {
     // TODO: implement dispose
@@ -76,17 +78,29 @@ class _ChatInputFieldState extends State<ChatInputField> {
             ),
             IconButton(
               onPressed: () {
-                print(myController.text);
+                plainText = myController.text;
 
-                demeChatMessages.add(
-                  ChatMessage(
-                      text: myController.text,
-                      messageType: ChatMessageType.text,
-                      messageStatus: MessageStatus.viewed,
-                      isSender: true),
-                );
+                setState(() {
+                  encryptedText = EncryptData.encryptAES(plainText);
+                  demeChatMessages.add(
+                    ChatMessage(
+                        text: encryptedText.base64,
+                        messageType: ChatMessageType.text,
+                        messageStatus: MessageStatus.viewed,
+                        isSender: true),
+                  );
+                });
               },
               icon: Icon(Icons.send, color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64)),
+            ),
+            IconButton(
+              onPressed: () {
+                setState(() {
+                  print(message.text);
+                  print('Şifre Çözüldü : ' + EncryptData.decryptAES(encryptedText));
+                });
+              },
+              icon: Icon(Icons.no_encryption, color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64)),
             ),
           ],
         ),
