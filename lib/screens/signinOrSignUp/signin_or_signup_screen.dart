@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_messaging_app/components/primary_button.dart';
 import 'package:flutter_chat_messaging_app/constants.dart';
-import 'package:flutter_chat_messaging_app/screens/chats/chats_screen.dart';
+import 'package:flutter_chat_messaging_app/screens/messages/message_screen.dart';
 
 class SigninOrSignupScreen extends StatelessWidget {
   const SigninOrSignupScreen({Key? key}) : super(key: key);
@@ -14,7 +14,7 @@ class SigninOrSignupScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding),
           child: Column(
             children: [
-              Spacer(
+              const Spacer(
                 flex: 2,
               ),
               Image.asset(
@@ -24,7 +24,7 @@ class SigninOrSignupScreen extends StatelessWidget {
                 height: 146,
                 fit: BoxFit.contain,
               ),
-              Spacer(
+              const Spacer(
                 flex: 1,
               ),
               PrimaryButton(
@@ -32,16 +32,16 @@ class SigninOrSignupScreen extends StatelessWidget {
                 press: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => ChatsScreen(),
+                      builder: (context) => const MessagesScreen(),
                     )),
               ),
-              SizedBox(height: kDefaultPadding * 1.5),
+              const SizedBox(height: kDefaultPadding * 1.5),
               PrimaryButton(
                 color: Theme.of(context).colorScheme.secondary,
                 text: "Üye Ol",
                 press: () {},
               ),
-              Spacer(
+              const Spacer(
                 flex: 2,
               )
             ],

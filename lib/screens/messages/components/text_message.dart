@@ -21,7 +21,7 @@ class TextMessage extends StatelessWidget {
           print(encryptedText);
         },
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 0.75, vertical: kDefaultPadding / 2),
+          padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 0.75, vertical: kDefaultPadding / 2),
           decoration: BoxDecoration(
             color: kPrimaryColor.withOpacity(message.isSender ? 1 : 0.1),
             borderRadius: BorderRadius.circular(30),

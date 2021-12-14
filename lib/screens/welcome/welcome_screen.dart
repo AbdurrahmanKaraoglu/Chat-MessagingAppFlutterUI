@@ -3,6 +3,8 @@ import 'package:flutter_chat_messaging_app/constants.dart';
 import 'package:flutter_chat_messaging_app/screens/signinOrSignUp/signin_or_signup_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

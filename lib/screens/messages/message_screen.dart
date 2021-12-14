@@ -14,7 +14,7 @@ class _MessagesScreenState extends State<MessagesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Body(),
+      body: const Body(),
     );
   }
 
@@ -23,12 +23,12 @@ class _MessagesScreenState extends State<MessagesScreen> {
       automaticallyImplyLeading: false,
       title: Row(
         children: [
-          BackButton(),
-          CircleAvatar(backgroundImage: AssetImage('assets/images/user1.png')),
-          SizedBox(width: kDefaultPadding * 0.75),
+          const BackButton(),
+          const CircleAvatar(backgroundImage: AssetImage('assets/images/user1.png')),
+          const SizedBox(width: kDefaultPadding * 0.75),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Text("Ahmet Özberk 1", style: TextStyle(fontSize: 16)),
               Text("3 dakika önce aktif", style: TextStyle(fontSize: 12)),
             ],
@@ -36,9 +36,9 @@ class _MessagesScreenState extends State<MessagesScreen> {
         ],
       ),
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.local_phone)),
-        IconButton(onPressed: () {}, icon: Icon(Icons.videocam)),
-        SizedBox(width: kDefaultPadding / 2)
+        IconButton(onPressed: () {}, icon: const Icon(Icons.local_phone)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.videocam)),
+        const SizedBox(width: kDefaultPadding / 2)
       ],
     );
   }

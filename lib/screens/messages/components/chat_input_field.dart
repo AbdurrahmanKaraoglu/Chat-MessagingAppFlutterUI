@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_messaging_app/constants.dart';
-import 'package:flutter_chat_messaging_app/models/Chat.dart';
 import 'package:flutter_chat_messaging_app/models/ChatMessage.dart';
 import 'package:flutter_chat_messaging_app/screens/messages/components/EncryptData.dart';
 
@@ -17,7 +16,6 @@ class _ChatInputFieldState extends State<ChatInputField> {
   late final ChatMessage message;
   @override
   void dispose() {
-    // TODO: implement dispose
     myController.dispose();
     super.dispose();
   }
@@ -25,25 +23,25 @@ class _ChatInputFieldState extends State<ChatInputField> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
+      padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding, vertical: kDefaultPadding / 2),
       decoration: BoxDecoration(
         color: Theme.of(context).scaffoldBackgroundColor,
         boxShadow: [
           BoxShadow(
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
             blurRadius: 32,
-            color: Color(0xFF087949).withOpacity(0.08),
+            color: const Color(0xFF087949).withOpacity(0.08),
           )
         ],
       ),
       child: SafeArea(
         child: Row(
           children: [
-            Icon(Icons.mic, color: kPrimaryColor),
-            SizedBox(width: kDefaultPadding),
+            const Icon(Icons.mic, color: kPrimaryColor),
+            const SizedBox(width: kDefaultPadding),
             Expanded(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: kDefaultPadding * 0.75),
+                padding: const EdgeInsets.symmetric(horizontal: kDefaultPadding * 0.75),
                 height: 50,
                 decoration: BoxDecoration(
                   color: kPrimaryColor.withOpacity(0.05),
@@ -55,11 +53,11 @@ class _ChatInputFieldState extends State<ChatInputField> {
                       Icons.sentiment_satisfied_alt_outlined,
                       color: Theme.of(context).textTheme.bodyText1!.color!.withOpacity(0.64),
                     ),
-                    SizedBox(width: kDefaultPadding / 4),
+                    const SizedBox(width: kDefaultPadding / 4),
                     Expanded(
                       child: TextField(
                         controller: myController,
-                        decoration: InputDecoration(hintText: 'Mesaj yazın', border: InputBorder.none),
+                        decoration: const InputDecoration(hintText: 'Mesaj yazın', border: InputBorder.none),
                       ),
                     ),
 
@@ -82,6 +80,8 @@ class _ChatInputFieldState extends State<ChatInputField> {
 
                 setState(() {
                   encryptedText = EncryptData.encryptAES(plainText);
+
+                  // burda firebase e veri göndereceğiz
                   demeChatMessages.add(
                     ChatMessage(
                         text: encryptedText.base64,

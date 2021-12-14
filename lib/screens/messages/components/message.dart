@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_messaging_app/constants.dart';
 import 'package:flutter_chat_messaging_app/models/ChatMessage.dart';
-import 'package:flutter_chat_messaging_app/screens/messages/components/audio_message.dart';
 import 'package:flutter_chat_messaging_app/screens/messages/components/text_message.dart';
-import 'package:flutter_chat_messaging_app/screens/messages/components/video_message.dart';
 
 class Message extends StatelessWidget {
   const Message({Key? key, required this.message}) : super(key: key);
@@ -16,12 +14,8 @@ class Message extends StatelessWidget {
       switch (message.messageType) {
         case ChatMessageType.text:
           return TextMessage(message: message);
-        case ChatMessageType.audio:
-          return AudioMessage(message: message);
-        case ChatMessageType.video:
-          return VideoMessage();
         default:
-          return SizedBox();
+          return const SizedBox();
       }
     }
 
@@ -31,11 +25,11 @@ class Message extends StatelessWidget {
         mainAxisAlignment: message.isSender ? MainAxisAlignment.end : MainAxisAlignment.start,
         children: [
           if (!message.isSender) ...[
-            CircleAvatar(
+            const CircleAvatar(
               radius: 12,
               backgroundImage: AssetImage('assets/images/user1.png'),
             ),
-            SizedBox(
+            const SizedBox(
               width: kDefaultPadding / 2,
             )
           ],
@@ -70,7 +64,7 @@ class MessageStatusDot extends StatelessWidget {
     }
 
     return Container(
-      margin: EdgeInsets.only(left: kDefaultPadding / 2),
+      margin: const EdgeInsets.only(left: kDefaultPadding / 2),
       height: 12,
       width: 12,
       decoration: BoxDecoration(color: dotColor(status), shape: BoxShape.circle),

@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       darkTheme: darkThemeData(context),
 
       // themeMode:ThemeMode.system,
-      home: WelcomeScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }
